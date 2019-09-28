@@ -43,4 +43,10 @@ public class MainController {
         userService.delete(id);
         return showAllUsers();
     }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+        model.addAttribute("userName","SDA");
+        return "home";
+    }
 }

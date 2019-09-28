@@ -9,9 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @SpringBootApplication
 public class DemoSpringApplication extends SpringBootServletInitializer implements WebMvcConfigurer {
@@ -31,6 +33,15 @@ public class DemoSpringApplication extends SpringBootServletInitializer implemen
 				.addResourceLocations("/WEB-INF/css/")
 				.resourceChain(true)
 				.addResolver(new PathResourceResolver());
+	}
+
+	@Bean
+	public ClassLoaderTemplateResolver templateResolver() {
+		ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
+		resolver.setPrefix("mytemplates/");
+		resolver.setSuffix(".html");
+
+		return resolver;
 	}
 
 	public static void main(String[] args) {
