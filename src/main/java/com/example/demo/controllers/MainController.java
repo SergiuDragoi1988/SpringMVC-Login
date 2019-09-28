@@ -15,6 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     private UserService userService;
 
+    @GetMapping("/home")
+    public String home(Model model){
+        model.addAttribute("userName","SDA");
+        return "home";
+    }
+
     @RequestMapping("/mvc/greet/{userId}")
     public String showAllUsers(Model model, @PathVariable Integer userId) {
         model.addAttribute("userName", userService.getUserName(userId));
@@ -38,5 +44,11 @@ public class MainController {
         userService.insertUser(name, email);
         return showAllUsers();
     }
+    @RequestMapping("mvc/user/{id}/delete")
+    public ModelAndView deleteUser(@PathVariable Integer id){
+        userService.delete(id);
+        return showAllUsers();
+    }
+
 
 }

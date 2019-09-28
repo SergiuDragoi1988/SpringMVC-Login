@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="/css/users.css/"/>
+</head>
+
+<body>
+<p th:text="#{home.welcome}"> Hallo </p>
+<p>
+    <li th:each="u : ${users}">
+
+            <a th:href="@{/mvc/user/{id}/delete(id=${u.id})}">
+                <img class="deleteUser">
+            </a>
+            <span th:text="${u.name}">User</span>
+
+        </li>
+
+</p>
+
+</body>
+</html>

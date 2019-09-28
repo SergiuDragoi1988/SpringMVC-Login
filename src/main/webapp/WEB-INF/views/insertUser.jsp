@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <body>
+
             <p>
                 Insert
             </p>
@@ -9,5 +10,12 @@
                 <p>Email: <input type="text" name="email"/></p>
                 <p><input type="submit" name="Submit"/></p>
             </form>
+
+
+
+
+
+
     </body>
+
 </html>

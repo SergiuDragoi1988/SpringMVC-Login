@@ -1,11 +1,22 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/users.css/"/>
+</head>
+
     <body>
        <p> Hello </p>
        <p>
             <c:forEach var="u" items="${users}">
-                <li><c:out value="${u.name}"/></li>
+                <li>
+                <a href="/mvc/user/${u.id}/delete">
+                <img class="deleteUser">
+                </a>
+                <span><c:out value="${u.name}"/></span>
+
+               </li>
             </c:forEach>
         </p>
 

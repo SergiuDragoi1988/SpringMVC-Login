@@ -6,11 +6,13 @@ import lombok.Getter;
 @Getter
 public class UserDTO {
 
+    private int id;
     private String name;
     private String email;
 
 
     public UserDTO(User u) {
+        this.id = u.getId();
         this.name = u.getName();
         this.email = u.getEmail();
 
