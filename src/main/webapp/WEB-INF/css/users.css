@@ -1,0 +1,9 @@
+.deleteUser{
+    content: url(/img/del.png);
+    height: 50px;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
