@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>
-<p>Hello</p>
+<p th:text="#{home.welcome}">Hello</p>
 <p>
 <li th:each="u : ${users}">
     <a th:href="@{/mvc/user/id/delete(id=${u.id})}">
