@@ -1,14 +1,15 @@
 package com.example.demoSpring.services;
 
 import com.example.demoSpring.data.DAO.Address;
+import com.example.demoSpring.data.DAO.AuthenticationInfo;
 import com.example.demoSpring.data.DAO.User;
 import com.example.demoSpring.data.DTO.UserDTO;
 import com.example.demoSpring.data.repositories.AddressRepository;
+import com.example.demoSpring.data.repositories.AuthenticationInfoRepository;
 import com.example.demoSpring.data.repositories.UserRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,8 @@ import java.util.Optional;
        private UserRepository userRepository;
        private AddressRepository addressRepository;
        private JavaMailSender javaMailSender;
+       private AuthenticationInfoRepository authenticationInfoRepository;
+
 
 
 
@@ -65,11 +68,13 @@ import java.util.Optional;
     }
 
     @Override
-    public void insertUser(String name, String mail) {
+    public void insertUser(String name, String mail, String password) {
         User u = User.builder().name(name).email(mail).build();
 
         userRepository.save(u);
-
+        AuthenticationInfo ai = AuthenticationInfo.builder().userName(name)
+                .password(password).build();
+        authenticationInfoRepository.save(ai);
     }
 
     @Override

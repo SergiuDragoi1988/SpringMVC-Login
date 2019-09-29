@@ -38,8 +38,8 @@ public class UserController {
     }
 
     @GetMapping("user/insert")
-    public void insertUser(String name, String mail){
-        userService.insertUser(name, mail);
+    public void insertUser(String name, String mail, String password){
+        userService.insertUser(name, mail, password);
     }
 
     @GetMapping("user/{id}/delete")

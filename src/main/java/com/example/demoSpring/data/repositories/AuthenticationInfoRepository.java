@@ -1,9 +1,10 @@
 package com.example.demoSpring.data.repositories;
 
-import com.example.demoSpring.data.DAO.User;
+import com.example.demoSpring.data.DAO.AuthenticationInfo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface AuthenticationInfoRepository extends CrudRepository<AuthenticationInfo, Integer> {
+
 }

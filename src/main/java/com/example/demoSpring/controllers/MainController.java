@@ -20,7 +20,7 @@ public class MainController {
         model.addAttribute("userName",userService.getUserName(userId));
         return "welcome";
     }
-    @RequestMapping("mvc/user/showAll")
+    @RequestMapping({"mvc/user/showAll","/"})
     public ModelAndView showAllUsers(){
         ModelAndView mv = new ModelAndView("users");
         mv.addObject("users", userService.getAllUsers());
@@ -33,8 +33,8 @@ public class MainController {
     }
 
     @PostMapping("mvc/user/insert")
-    public ModelAndView insertUser(String name, String email) {
-        userService.insertUser(name, email);
+    public ModelAndView insertUser(String name, String email, String password) {
+        userService.insertUser(name, email, password);
         return showAllUsers();
     }
 

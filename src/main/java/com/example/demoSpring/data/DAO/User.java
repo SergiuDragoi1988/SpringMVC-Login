@@ -10,7 +10,6 @@ import java.util.Objects;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-
 @Table(name = "user")
 @NoArgsConstructor
 public class User {
@@ -20,6 +19,10 @@ public class User {
     private String name;
     private String email;
     private LocalDate birthDate;
+
+    @OneToOne
+    @JoinColumn(name = "authentication_id")
+    private AuthenticationInfo authenticationInfo;
 
     @OneToOne
     @JoinColumn(name = "address_id")
