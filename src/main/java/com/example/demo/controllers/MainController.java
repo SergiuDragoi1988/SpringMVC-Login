@@ -27,7 +27,7 @@ public class MainController {
         return "welcome";
     }
 
-    @RequestMapping("/mvc/user/showAll")
+    @RequestMapping("/mvc/user/showAll", "/")
     public ModelAndView showAllUsers() {
       ModelAndView mv = new ModelAndView("users");
       mv.addObject("users", userService.getAllUsers());

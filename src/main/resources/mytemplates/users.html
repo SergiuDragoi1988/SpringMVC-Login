@@ -6,8 +6,16 @@
 </head>
 
 <body>
-<p th:text="#{home.welcome}"> Hallo </p>
-<p>
+<div class="logout" style="
+text:red">
+    <p th:text="#{home.welcome}"> Hallo </p>
+    <span th:text="${#httpServletRequest.remoteUser}">User</span>
+    <form th:action="@{/logout}" method="post">
+        <input type="hidden" name="${csrf.parameterName}" value="${csrf.token}"/>
+        <input type="submit" value="Logout"/>
+    </form>
+</div>
+
     <li th:each="u : ${users}">
 
             <a th:href="@{/mvc/user/{id}/delete(id=${u.id})}">
