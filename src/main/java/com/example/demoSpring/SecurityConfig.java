@@ -20,12 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().permitAll();
     }
 
-    @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withUsername("Sergiu")
-                .password("{noop}pass").roles("USER").build();
+//    @Bean
+//    @Override
+//    protected UserDetailsService userDetailsService() {
+//        UserDetails userDetails = User.withUsername("Sergiu")
+//                .password("{noop}pass").roles("USER").build();
+//
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
 
-        return new InMemoryUserDetailsManager(userDetails);
-    }
+
 }
