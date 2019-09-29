@@ -10,6 +10,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -43,6 +44,20 @@ public class DemoSpringApplication extends SpringBootServletInitializer implemen
 		resolver.setSuffix(".html");
 
 		return resolver;
+	}
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new PasswordEncoder() {
+			@Override
+			public String encode(CharSequence charSequence) {
+				return charSequence.toString();
+			}
+
+			@Override
+			public boolean matches(CharSequence charSequence, String s) {
+				return s.equals(charSequence.toString());
+			}
+		};
 	}
 
 	@Override
